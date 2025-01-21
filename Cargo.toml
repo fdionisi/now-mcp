@@ -1,0 +1,16 @@
+[package]
+name = "now-mcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+async-trait = "0.1.83"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive", "env"] }
+context-server = { git = "https://github.com/fdionisi/context-server", version = "0.8.2" }
+futures = "0.3"
+indoc = "2.0.5"
+parking_lot = "0.12.3"
+serde_json = "1"
+tokio = { version = "1.42", features = ["full"] }
