@@ -79,17 +79,15 @@ async fn main() -> Result<()> {
 }
 
 fn get_current_time_info() -> String {
-    let now = chrono::Utc::now();
     let local_now = chrono::Local::now();
-    let week = now.iso_week().week();
-    let day = now.format("%A").to_string();
+    let week = local_now.iso_week().week();
+    let day = local_now.format("%A").to_string();
 
     formatdoc! {"
-        Current UTC time: {}
         Current local time: {}
         Week of the year: {}
         Day of the week: {}
-    ", now, local_now, week, day}
+    ", local_now, week, day}
 }
 
 struct NowTool;
@@ -105,7 +103,7 @@ impl ToolExecutor for NowTool {
         Tool {
             name: "now".into(),
             description: Some(
-                "Retrieve the current UTC time, week of the year, and day of the week.".into(),
+                "Retrieve the current local time, week of the year, and day of the week.".into(),
             ),
             input_schema: json!({
                 "type": "object",
